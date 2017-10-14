@@ -1,0 +1,60 @@
+package usmp.pe.edu.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import usmp.pe.edu.bean.Producto;
+import usmp.pe.edu.bean.ProductoRepository;
+
+@Controller
+public class ProductoController {
+	
+	@Autowired
+	private ProductoRepository productoRepo;
+	
+	
+	@GetMapping("/addProducto")
+	public String loadFormPerson(Model model) {
+		model.addAttribute("producto", new Producto());
+		return "addProducto";
+	}
+
+	@PostMapping("/addProducto")
+	public String submitPerson(@ModelAttribute Producto producto) {
+
+		productoRepo.save(producto);
+
+		return "AgregarProducto";
+	}
+	
+	@PostMapping("/saveProduct")
+	public String savePerson(@ModelAttribute Producto producto) {
+		productoRepo.save(producto);
+		return "AgregarProducto";
+	}
+	
+
+	@GetMapping("/listPerson")
+	public String list(Map<String, Object> model) {
+		List<Producto> prod = productoRepo.findAll();
+		model.put("prod", prod);
+		return "productList";
+	}
+	
+	@GetMapping(value = "/person/{productId}/edit")
+	public String editPerson(@PathVariable("productId") long codigo,
+			Model model) {
+		Producto product =productoRepo.findOne(codigo);
+		model.addAttribute(product);
+		return "editProduct";
+	}
+	
+}

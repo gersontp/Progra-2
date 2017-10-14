@@ -1,0 +1,15 @@
+package usmp.pe.edu.bean;
+
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.repository.Repository;
+
+public interface ProductoInterface extends Repository<Producto, Long> {
+
+	void save(Producto producto) throws DataAccessException;
+
+	List<Producto> findAll();
+
+	Producto findOne(Long codigo);
+}

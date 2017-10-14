@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>:: LOGIN ::</title>
+</head>
+<body>
+	<div>
+		<h1>Acceso Sistema</h1>
+		<form action="#" th:action="@{/addPerson}" th:object="${persona}"
+			method="post">
+			<p>
+				DNI: <input type="text" th:field="*{dni}" />
+			</p>
+			<p>
+				Nombre: <input type="text" th:field="*{nombre}" />
+			</p>
+			<p>
+				Edad: <input type="text" th:field="*{edad}" />
+			</p>
+			<p>
+				Incremento: <input type="text" th:field="*{incremento}" />
+			</p>
+			<p>
+				<input type="submit" value="enviar" /> <input type="reset"
+					value="cancelar" />
+			</p>
+		</form>
+
+	</div>
+
+</body>
+</html>

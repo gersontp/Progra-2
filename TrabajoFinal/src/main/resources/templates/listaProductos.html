@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>:: LISTA DE PRODUCTOS ::</title>
+</head>
+<body>
+	<table border="1"
+		style="width: 65%; margin-left: 20%; margin-top: 20px;">
+		<tr>
+			<td colspan="2">
+				<div style="font-size: 22px; text-align: center;">
+					<b>SISTEMA DE VENTAS PRESENCIALES</b>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td style="width: 25%;">
+				<a href="#">Gestionar ventas</a> <br></br>
+			 	<a href="#">Registra venta</a> <br></br>
+			  	<a href="#">Mantenimiento de Productos</a> <br></br>
+			  	<a href="#">Salir</a> 
+			</td>
+			<td style="width: 75%;">
+					<div style="width: 100%; font-size: 12px; padding: 10px;">
+						<div style="text-align: center; font-size: 22px;">
+							Lista de Productos
+						</div>
+						<table style="width: 95%;">
+							<tr>
+								<td>Producto</td>
+								<td><input type="text" style="width: 98%;" /></td>
+								<td>
+									<button style="width: 100%;">Buscar</button>
+								</td>
+							</tr>
+						</table>
+						<a style="width: 21%; margin-left: 74%;" href="/agregarProducto" >Registrar</a>
+						
+						<table border="1" style="width: 95%;">
+							<tr>
+								<th>CODIGO</th>
+								<th>NOMBRE</th>
+								<th>CANTIDAD</th>
+								<th>PRECIO</th>
+								<th>OPCIONES</th>
+							</tr>
+							<tr th:each="producto : ${productos}">
+							   	<td th:text="${producto.codigo}"></td>
+								<td th:text="${producto.nombre}"></td>
+								<td th:text="${producto.cantidad}"></td>
+								<td th:text="${producto.precio}"></td>
+								<td>
+									<a th:href="@{'/producto/__${producto.codigo}__/eliminar'}" th:text="Eliminar" /> 
+									<a th:href="@{'/producto/__${producto.codigo}__/edit'}" th:text="Actualizar" />
+								</td>
+							</tr>
+						</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

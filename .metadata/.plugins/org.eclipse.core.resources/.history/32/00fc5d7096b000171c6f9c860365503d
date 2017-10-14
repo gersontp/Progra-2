@@ -1,0 +1,38 @@
+
+DROP TABLE PRODUCTO IF EXISTS;
+
+CREATE TABLE producto (
+  codigo  INTEGER IDENTITY PRIMARY KEY,
+  nombre  VARCHAR(30),
+  precio  DECIMAL(8,2),
+  cantidad  INTEGER
+);
+
+DROP TABLE USUARIO IF EXISTS;
+
+CREATE TABLE usuario (
+  codigo  INTEGER IDENTITY PRIMARY KEY,
+  usuario  VARCHAR(30),
+  password  VARCHAR(30),
+  nombre  VARCHAR(30),
+  dni  VARCHAR(8),
+  celular  VARCHAR(9)
+);
+
+DROP TABLE DOCUMENTOVENTA IF EXISTS;
+
+CREATE TABLE documentoventa (
+  codigo  INTEGER IDENTITY PRIMARY KEY,
+  fecha DATE,
+  codigoUsuario INTEGER,
+  nombreCliente  VARCHAR(30),
+  dniCliente  VARCHAR(8)
+);
+
+DROP TABLE DETALLE IF EXISTS;
+
+CREATE TABLE detalle (
+  idProducto  INTEGER IDENTITY PRIMARY KEY,
+  codigoDocumento  INTEGER IDENTITY PRIMARY KEY,
+  cantidadPedido INTEGER
+);

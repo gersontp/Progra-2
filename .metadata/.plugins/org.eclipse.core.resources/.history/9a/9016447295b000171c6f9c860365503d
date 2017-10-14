@@ -1,0 +1,8 @@
+package usmp.pe.edu.bean;
+
+import org.springframework.data.repository.Repository;
+
+public interface ProductoInterface extends Repository<Producto, Long> {
+	
+	
+}
